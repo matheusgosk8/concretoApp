@@ -1,0 +1,119 @@
+
+<div class="welcome">
+    <h1> Bem vindo  </h1>
+    <p> Esta página se trata de uma simples aplicação para o cálculo de vigas em concreto armado</p>
+</div>
+
+<div class="app">
+    <p> Por favor, insira as informações: </p>
+
+    <form action="/result" method="post">
+        <div class="infoViga">
+            <h3> Descreva a seção transversal da viga</h3>
+        
+            <div class="infoVigaImg">
+            <img src="./res/images/sessãoAAsm.png" alt="Sessão transversal de viga"
+            class="cs-img"
+            >
+            <img src="./res/images/sessãoComp.png" alt="Sessão transversal de viga"
+            class="cl-img"
+            >
+        
+            </div>
+            
+            <div class="CrossSectionInput p-2">
+                <div class="bw-c">
+                    <sapn class="bw-label"> bw: </span>
+                    <input type="number" class="iBw" required name="ibw" step = any>
+                    <sapn class="cm-label"> cm</span>
+                </div>
+                <div class="hw-c">
+                    <sapn class="hw-label"> h: </span>
+                    <input type="number" class="hBw" required name="ih" step = any>
+                    <sapn class="cm-label"> cm</span>
+                </div>
+                <div class="cobrimento">
+                    <span> Cobrimento &lpar; e &rpar;</span>
+                    <select name="ie" required>
+                        <option value="3">3 cm</option>
+                        <option value="5">5 cm</option>
+                        <option value="10">10 cm</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        {{!-- final info-viga --}}
+        <div class="infoEsf">
+            <h3> Descreva os esforços na estrutura </h3>
+            
+            <div class="esfImg">
+                <img src="./res/images/esfReq.png" alt="esforços"
+                class="esf-img"
+                >
+               
+            </div> 
+            <small> Os esforços enviados serão majorados em 1.4 como coeficiente de segurança para os cálculos. </small>
+            <div class="esfSectionInput p-2">
+                <div class="msk1-c">
+                    <sapn class="msk-label"> Msk1: </span>
+                    <input type="number" class="msk-i" required name="imsk1" step=any>
+                    <sapn class="cm-label"> KN*m</span>
+                </div>
+                <div class="msk2-c">
+                    <sapn class="msk2-label"> Msk2: </span>
+                    <input type="number" class="msk2-i" required name="imsk2" step = any>
+                    <sapn class="cm-label"> KN*m</span>
+                </div>
+                <div class="vsk-c">
+                    <sapn class="vsk-label"> Vsk: </span>
+                    <input type="number" class="vsk-i" required name="ivsk" step = any>
+                    <sapn class="cm-label"> KN</span>
+                </div>
+            </div>
+        </div>
+        {{!-- Final info esf --}}
+        <div class="materialInfo mt-4">
+            <h3> Informe as características do projeto</h3>
+            <div class="materialInput ">
+                <p>Fck do concreto:  </p>
+                <select name="ifck"  required>
+                    <option name="fck"  value="15"> 15Mpa</option>
+                    <option name="fck"  value="20"> 20Mpa</option>
+                    <option name="fck"  value="25"> 25Mpa</option>
+                    <option name="fck"  value="30"> 30Mpa</option>
+                    <option name="fck"  value="35"> 35Mpa</option>
+                    <option name="fck"  value="40"> 40Mpa</option>
+                    <option name="fck"  value="45"> 45Mpa</option>
+                    <option name="fck"  value="50"> 50Mpa</option>
+                </select>
+                <p> Aço usado nas  armaduras</p>
+                <span>Positiva: </span>
+                <select name="ipca" required>
+                    <option value="25"> CA-25</option>
+                    <option value="50"> CA-50</option>
+                    <option value="60"> CA-60</option>
+                </select>
+                <span>Negativa: </span>
+                <select name="inca"  required>
+                    <option value="25"> CA-25</option>
+                    <option value="50"> CA-50</option>
+                    <option value="60"> CA-60</option>
+                </select>
+                <span> Estribos </span>
+                <select name="ieca"  required>
+                    <option value="25"> CA-25</option>
+                    <option value="50"> CA-50</option>
+                    <option value="60"> CA-60</option>
+                </select>
+            </div>
+        </div>
+        {{!-- fim materialInfo --}}
+        <button 
+        type="submit"
+        class="btn btn-outline-dark mt-5"> Enviar informações 
+        </button>
+        
+    </form>
+
+</div>
+{{!-- Final app --}}

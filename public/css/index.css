@@ -1,0 +1,663 @@
+/* Conteúdo da navegação */
+
+:root{
+    --fc-light: white;
+    --bg-color-gr: green;
+
+
+    --fs-deafult: 18px;
+    --fs-large: 25px;
+    --fs-small: 15px;
+
+    --fc-ligth: black;
+    --fc-dark: white;
+
+    --fs-mobile-small: 10px;
+    --fs-mobile-smaller: 8px;
+    --fs-mobile-default: 15px;
+    --fs-mobile-large: 18px;
+}
+
+.page-content{
+    min-height: 100vh;
+    height: fit-content;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    padding: 2em;
+}
+
+
+
+
+.primaryNav{
+    padding-left: 1em;
+    background-color: green;
+    height: 15vh;
+    width: 100vw;
+
+    display: grid;
+    grid-template-columns: 25vw 75vw;
+    align-items: center;
+}
+
+.logo{
+    width: fit-content;
+    height: fit-content;
+  
+ 
+}
+
+.logoImg{
+    width: 150px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+
+}
+
+.primaryNavBar{
+
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    max-width: 75vw;
+    justify-content: space-evenly;
+ 
+
+}
+
+.primaryNavBar a{
+    font-size: var(--fs-large);
+    text-decoration: none;
+    color: white;
+    opacity: .7;
+
+    transition: all 250ms;
+}
+
+.primaryNavBar a:hover{
+    opacity: 1;
+    color: white;
+}
+.navFunction{
+max-width: 50vw;
+}
+footer{
+    margin: 0;
+    padding: 0;
+}
+
+.footer{
+    margin: 0;
+    padding: 0;
+    height: 15vh;
+    background-color: var(--bg-color-gr);
+    color: var(--fc-dark);
+}
+
+.footerLinks{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.footerLinks a{
+    color: white;
+    text-decoration: none;
+    margin: 0;
+
+}
+
+.footerLastRow{
+    text-align: center;
+    margin: 0;
+  
+}
+
+.footerLastRow p{
+    margin: 0;
+    padding: 0;
+}
+
+/* Home Page */
+
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.app input{
+    min-width:20px;
+    width: 50px;
+
+    outline: none;
+    border: none
+    ;
+    border-bottom: 1.5px solid black;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.CrossSectionInput{
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 1em;
+
+    border: 2px solid black;
+
+}
+
+.cs-img{
+    max-width: 350px;
+    max-height: 350px;
+    width: 50%;
+}
+.cl-img{
+    max-width: 400px;
+    max-height: 150px;
+    width: 50%;
+}
+
+.esfImg{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:60% ;
+    max-width: 400px;
+}
+
+.esf-img{
+    
+    max-width: 400px;
+    width: 100%;
+    
+}
+
+.esfSectionInput{
+    border: 2px solid black;
+}
+
+.infoVigaImg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.infoViga{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.infoEsf{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;    
+}
+
+.materialInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+/* Página de resultados  */
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.resDadosEntrada{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60vw;
+}
+
+.gridElement{
+    padding: 1em;
+    border: 2px solid black;
+}
+
+.gridTitle{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+
+.gridTitleSecondary{
+    font-weight: bold;
+
+}
+
+
+.resValue{
+    font-weight: bold;
+}
+
+
+.resTitle{
+    font-weight: bold;
+    font-size: var(--fs-deafult)
+}
+.resTitleUnder{
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.resTab{
+    border: 2px solid black;
+    width: fit-content;
+    padding: 1em;
+
+}
+
+
+
+.positiva, 
+.negativa{
+    border-right: 2px solid black;
+    height: 100%;
+    width: 40%;
+  
+}
+
+
+
+.armaduras-longitudinais{
+   display: flex;
+   flex-direction: row;
+    height: 90vh;
+    max-height: 100vh;
+    border-top: 1px solid black;
+   
+}
+
+
+
+
+.tabelaArmadura{
+    width: max-content;
+    height: max-content;
+}
+
+.resultTableHeader{
+    width: 300px;
+}
+
+
+
+/*--------Data--------*/
+
+.kcKs p{
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+.kcKs small{
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+
+.dataTable{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 500px;
+    text-align: center;
+}
+
+.tableHeaderFck{
+    width: 500px;
+    border: 1px solid black;
+}
+
+.tableHeaderFck p{
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+
+
+.dataTable p{
+    border: 1px solid black;
+    margin: 0;
+}
+
+.tableCa{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 300px;
+}
+
+.tableCa p{
+    border: 1px solid black;
+    margin: 0;
+}
+
+.tableHeaderCa{ 
+    width: 300px;
+    border: 1px solid black;
+}
+.tableHeaderCa p{
+   
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+
+.table1,
+.table2{
+    text-align: center;
+    
+}
+
+.tables{
+
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+/* ----- Tabela 3  */
+
+.table3{
+    display: flex;
+    flex-direction: row;
+    padding-right: 1em;
+    width: max-content;
+    min-height: 400px;
+    height: fit-content;
+}
+
+.table3 p{
+    margin: 0;
+    text-align: center;
+    border: 1px solid black;
+}
+
+
+.table3Row{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    max-height: 300px;
+}
+
+.dmCol{
+    height: 100%;
+    max-height: 100%;
+}
+
+.table3Element{
+
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 0;
+}
+
+.table3Header{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+}
+
+.table3Header p{
+    border: 1px solid black;
+    margin: 0;
+    text-align: center;
+}
+
+.table3Right{
+       
+    height: fit-content;
+}
+
+.close{
+    background-color: hsla(132, 98%, 50%, 0.521);
+    color: black;
+
+}
+
+.closer{
+    background-color: hsla(132, 83%, 23%, 0.897);
+    color: black;
+
+}
+
+.far{
+    background-color: hsla(61, 98%, 50%, 0.623);
+    color: black;
+
+}
+
+.further{
+    background-color: hsla(34, 90%, 51%, 0.815);
+    color: white;
+
+}
+
+.invalid{
+    background-color: hsl(0, 98%, 51%);
+    color: white;
+}
+
+.leggendIcon{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.leg1{
+background-color: hsla(132, 83%, 23%, 0.897);
+
+}
+.leg2{
+    background-color: hsla(132, 98%, 50%, 0.521);
+
+}
+.leg3{
+    background-color: hsla(61, 98%, 50%, 0.623);
+
+}
+.leg4{
+    background-color: hsla(34, 90%, 51%, 0.815);
+    color: white;
+}
+.leg5{
+    background-color: hsl(0, 98%, 51%);
+    color: white;
+}
+
+.table3Right{
+       
+    height: fit-content;
+}
+
+/* Tabela 4 estribos */
+
+.table4Col{
+display: flex;
+flex-direction: column;
+
+}
+.table4Col p{
+    text-align: center;
+    
+}
+
+
+.table4{
+    margin-top: 2em;
+
+    width: 400px;
+}
+.table4 p{
+    margin: 0;
+    border: 1px solid black;
+}
+
+.table4Row{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+
+.table4Row p {
+    margin: 0;
+    text-align: center;
+
+}
+
+.table4RowElements{
+    display: flex;
+    flex-direction: row;
+}
+
+.table4Row2{
+    display: flex;
+    flex-direction: column;
+}
+
+.dmHeader{
+    border: 2px solid black;
+    text-align: center;  
+}
+.dmRow{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+.dmRow p{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.espHeader{
+    height: 52px;
+}
+
+
+/* ----------Estribos ------- */
+.estribos{
+    max-width: 80vw;
+    display: grid;
+    grid-template-columns: 30vw 40vw;
+    column-gap: 2em;
+}
+
+.estribosContas p{
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+.estribosSection{
+    display: flex;
+    flex-direction: row;
+    gap:2em;
+}
+
+.longitudinalSection{
+    display: flex;
+    flex-direction: row;
+
+    gap: 2em;
+}
+
+.estribosResDireita{
+    margin-top: 2em;
+}
+
+
+.estribosData p{
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+.estribosData small{
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+
+.navMobileToggler{
+    display: none;
+}
+.navMobileCb{
+    display: none;
+}
+
+/* Pagina de sobre */
+
+.sobre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre h2{
+    text-align: center;
+}
+
+
+.sobre p{
+    text-align: justify; 
+}
+.refFooter {
+    margin-top: 2em;
+    font-size: 15px;
+    opacity: .8;
+}
+
+.refFooter P{
+    text-align: justify;
+}
+
+.sobre a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: all 250ms;
+}
+
+.sobre a:hover{
+    transform: scale(1.1);
+}
+
+.apres{
+    width: 60%;
+}
+
+.usoApp{
+    width: 60%;
+}
+.ref{
+    width: 50%;
+}
+.appPak{
+    font-weight: bold;
+}
+
+
+
+

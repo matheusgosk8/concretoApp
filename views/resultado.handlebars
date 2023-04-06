@@ -1,0 +1,450 @@
+<div class="resultWelcome">
+    <div class="initAction">
+    <h1> Resultados </h1>
+    <a class="btn btn-outline-success
+    actionPrint
+    "
+    id="dp"
+    href="/pdf"
+    target="_blank"
+    title="Uma página em branco será aberta e o pdf desejado será baixado diretamente no navegador"
+    > Imprimir PDF </a>
+    </div>
+</div>
+
+{{#if resultado}}
+
+<div class="page result-page">
+
+    <p class="resTitleUnder"> Dados de entrada </p>
+    <div class="resDadosEntrada">
+    
+        <div class="gridElement">
+            <p class="gridTitle"> Sessão transversal </p>
+            <p>bw:  {{resultado.bw}} <span> cm</span> </span></p>
+            <p>h:   {{resultado.h}} <span> cm</span> </span> </p>
+        </div>
+
+        <div class="gridElement">
+            <p class="gridTitle"> Esforços</p>
+            <p>Ms1: {{resultado.msk1}} <span>KN&ast;m</span></p>
+            <p>Ms2: {{resultado.msk2}} <span>KN&ast;m</span></p>
+            <p>Vs1: {{resultado.vsk}} <span>KN</span></p>
+        </div>
+        
+        <div class="gridElement">
+            <p class="gridTitle">Dados do projeto </p>
+            <p>fck: {{resultado.fck}} <span>Mpa</span></p>
+            <p>As1: CA-{{resultado.nca}} </p>
+            <p>As2: CA-{{resultado.pca}} </p>
+            <P>Asw: CA-{{resultado.eca}}</P>
+        </div>
+        
+    </div>
+    {{!-- Fim dados de entrada --}}
+
+
+    <div class="resCalcMemo mt-3">
+
+        <div class="calcDados">
+
+            <p class="resTitleUnder"> Memorial de cálculo </p>
+            <p>Altura útil &lpar;d&rpar; =  h -e&lpar;cobrimento&rpar;  <span>cm</span></p>
+            <p>d = {{resultado.h}} - {{resultado.e}} = 
+            <span class="resValue">  {{resultado.d}} <span> cm</span></span>
+            </p>
+
+            <div class="resMajor">
+                <p class="resValue"> Esforços majorados com &alpha; = 1.4</p>
+                <p> md1 = {{resultado.msk1}}KN&ast;m &ast;  1.4 &ast; 100 <sup>cm</sup> &#8260; <sub>m</sub> = 
+                <span class="resValue">{{resultado.msd1}} KN&ast;cm</span></p>
+                <p> md2 = {{resultado.msk2}}KN&ast;m &ast;  1.4 &ast; 100 <sup>cm</sup> &#8260; <sub>m</sub> = 
+                <span class="resValue">{{resultado.msd2}} KN&ast;cm</span></p>
+                <p> Vd1 = {{resultado.vsk}}KN &ast;  1.4= 
+                <span class="resValue">{{resultado.vsd}} KN</span></p>
+    
+            </div>
+        </div>
+
+
+        <p class="resTitleUnder"> Armaduras longitudinais </p>
+        <div class="armaduras-longitudinais">
+            <div class="positiva">
+                <p class="resTitle"> Armadura positiva </p>
+            
+                <div class="resKc">
+                    <p> Kc = <sup>bw &ast; d<sup>2</sup></span></sup>&#8260;<sub> Msd</sub> </p>
+                    <p> Kc1 = <sup>{{resultado.bw}}cm &ast; {{resultado.d}}cm<sup>2</sup></span></sup>&#8260;<sub> {{resultado.msd1}}KN&ast;cm</sub> =
+                    <span class="resValue">{{resultado.pkc}}</span></p>
+                </div>
+                <p class="resTitle"> Valores tabelados </p>
+                <div class="resTab">
+                {{#if tab}}
+            
+                    <p>fck da tabela:
+                    <span class="gridTitleSecondary">{{resultado.fck}}Mpa</span>
+                    </p>
+                    <p>Maior valor de Kc na tabela:
+                    <span class="bl-2 gridTitleSecondary">{{tab.tabPkc}}</span>
+                    </p>
+                    <p class="gridTitleSecondary">CA-{{resultado.pca}}</p>
+                    <p >Ks1:
+                    <span class="gridTitleSecondary">{{tab.tabPks}}</span> </p>
+                </div>
+            
+                {{/if}}
+                <div class="resAs mt-3">
+            
+                    <p>As = <sup> Ks&ast; Msd </sup>&#8260;<sub>d</sub>
+                    <span>cm<sup>2</sup></span>  </p>
+                    <p>As = <sup> {{resultado.pks}} &ast; {{resultado.msd1}}</sup>&#8260;<sub>{{resultado.d}}</sub> = <span class="gridTitleSecondary">{{resultado.pas}} <span>cm<sup>2</sup></span> </span></p>
+            
+                </div>
+            </div>
+
+            <div class="tabelaArmadura">
+            {{!-- Inicio da tabela 1 --}}
+                <div class="tabelaBarras">
+                    
+                    <div class="table3">
+                        <div class="dmCol">
+                            <p>
+                            <sup> dm &lpar;mm&rpar; </sup>&#8260;<sub>Barras</sub>
+                            </p>
+                            <p>5</p>
+                            <p>6.3</p>
+                            <p>8</p>
+                            <p>10</p>
+                            <p>12.5</p>
+                            <p>16</p>
+                            <p>20</p>
+                            <p>22</p>
+                            <p>25</p>
+                            <p>32</p>
+                            <p>40</p>
+                        </div>
+
+                        <div class="table3Right">
+                            <div class="table3Header">
+                                {{#each bar}}
+                                <p>{{this.nb}}</p>
+                                {{/each}}
+                            </div>
+                            <div class="table3Row">
+                                {{#each bar}}
+                                <div>
+                                    {{#each query}}
+                                        {{#far this.as ../../resultado.pas }}
+                                        <p class="table3Element far">{{this.as}}</p>
+                                        {{/far}}
+                                        {{#further this.as ../../resultado.pas }}
+                                        <p class="table3Element further">{{this.as}}</p>
+                                        {{/further}}
+                                        {{#closer this.as ../../resultado.pas }}
+                                        <p class="table3Element closer">{{this.as}}</p>
+                                        {{/closer}}
+                                        {{#close this.as ../../resultado.pas }}
+                                        <p class="table3Element close">{{this.as}}</p>
+                                        {{/close}}
+                                        {{#invalid this.as ../../resultado.pas }}
+                                        <p class="table3Element invalid">{{this.as}}</p>
+                                        {{/invalid}}
+                                {{/each}}
+                                </div>
+                            {{/each}}
+                            </div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+            {{!-- fim da tabela 1 --}}
+
+            <div class="tableLegend">
+                <p class="resTitle"> Legenda de cores da tabela </p>
+                <p> <span class="legendIcon leg1"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;muito próximo;</p>
+                <p> <span class="legendIcon leg2"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; próximo;</p>
+                <p> <span class="legendIcon leg3"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; distante;</p>
+                <p> <span class="legendIcon leg4"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; muito distante;</p>
+                <p> <span class="legendIcon leg5"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; inválido;</p>
+            </div>
+            
+        </div>
+
+        <div class="armaduras-longitudinais mb-0 pb-0">
+            <div class="negativa">
+                    <p class="resTitle"> Armadura negativa </p>
+                    <div class="resKc">
+                        <p> Kc = <sup>bw &ast; d<sup>2</sup></span></sup>&#8260;<sub> Msd</sub> </p>
+                        <p> Kc1 = <sup>{{resultado.bw}}cm &ast; {{resultado.d}}cm<sup>2</sup></span></sup>&#8260;<sub> {{resultado.msd2}}KN&ast;cm</sub> =
+                        <span class="resValue">{{resultado.nkc}}</span></p>
+                    </div>
+                    <p class="resTitle"> Valores tabelados </p>
+                    <div class="resTab">
+                    {{#if tab}}
+                        <p>fck da tabela:
+                        <span class="gridTitleSecondary">{{resultado.fck}}Mpa</span>
+                        </p>
+                        <p>Maior valor de Kc na tabela:
+                        <span class="bl-2 gridTitleSecondary">{{tab.tabNkc}}</span>
+                        </p>
+                        <p class="gridTitleSecondary">CA-{{resultado.nca}}</p>
+                        <p >Ks1:
+                        <span class="gridTitleSecondary">{{tab.tabNks}}</span> </p>
+                    </div>
+            
+                    {{/if}}
+                    <div class="resAs mt-3">
+                        <p>As = <sup> Ks&ast; Msd </sup>&#8260;<sub>d</sub>
+                        <span>cm<sup>2</sup></span>  </p>
+                        <p>As = <sup> {{resultado.nks}} &ast; {{resultado.msd2}}</sup>&#8260;<sub>{{resultado.d}}</sub> = <span class="gridTitleSecondary">{{resultado.nas}} <span>cm<sup>2</sup></span> </span></p>
+                    </div>
+                </div>
+                <div class="tabelaArmadura">
+                    {{!-- Inicio da tabela 2 --}}
+                    <div class="tabelaBarras">
+                        <div class="table3">
+                            <div class="dmCol">
+                                <p>
+                                <sup> dm &lpar;mm&rpar; </sup>&#8260;<sub>Barras</sub>
+                                </p>
+                                <p>5</p>
+                                <p>6.3</p>
+                                <p>8</p>
+                                <p>10</p>
+                                <p>12.5</p>
+                                <p>16</p>
+                                <p>20</p>
+                                <p>22</p>
+                                <p>25</p>
+                                <p>32</p>
+                                <p>40</p>
+                            </div>
+                            <div class="table3Right">
+                                <div class="table3Header ">
+                                    {{#each bar}}
+                                    <p>{{this.nb}}</p>
+                                    {{/each}}
+                                </div>
+                            
+                                <div class="table3Row">
+
+                              
+                                    {{#each bar}}
+                                  
+                                    <div>
+                                   
+                                        {{#each query}}  
+                                            {{#far this.as ../../resultado.nas }}
+                                            <p class="table3Element far">{{this.as}}</p>
+                                            {{/far}}
+                                            {{#further this.as ../../resultado.nas }}
+                                            <p class="table3Element further">{{this.as}}</p>
+                                            {{/further}}
+                                            {{#closer this.as ../../resultado.nas }}
+                                            <p class="table3Element closer">{{this.as}}</p>
+                                            {{/closer}}
+                                            {{#close this.as ../../resultado.nas }}
+                                            <p class="table3Element close">{{this.as}}</p>
+                                            {{/close}}
+                                            {{#invalid this.as ../../resultado.nas }}
+                                            <p class="table3Element invalid">{{this.as}}</p>
+                                            {{/invalid}}
+                                    {{/each}}
+                                    </div>
+                                {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!-- fim da tabela 2 --}}
+
+                <div class="tableLegend">
+                     
+                    <p class="resTitle"> Legenda de cores da tabela </p>
+                    <p> <span class="legendIcon leg1"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; muito próximo;</p>
+                    <p> <span class="legendIcon leg2"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;  próximo;</p>
+                    <p> <span class="legendIcon leg3"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;  distante;</p>
+                    <p> <span class="legendIcon leg4"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;  muito distante;</p>
+                    <p> <span class="legendIcon leg5"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; inválido;</p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="estribos">
+            <div class="estribosContas">
+                <p class="resTitleUnder" > Estribos </p>
+                <p> Valores de esforço cortante máximo</p>
+                <p>Vsd = {{resultado.vsd}} KN</p>
+                <p></p>
+                <p class="resTitle"> Modelo 1 de cálculo NBR-6118</p>
+                <p>fcd = <sup>fck</sup>&#8260;<sub>1.4</sub>
+                  &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</p>
+                <small> Resistência acompressão de cáculo, majorado em &alpha;= 1.4</small>
+                <p>fcd = <sup>{{resultado.fck}}&ast;1000</sup>&#8260;<sub>1.4</sub> =<span class="resValue">{{resultado.fcd}}&lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</span></p>
+                <p> fyd = <sub>fyk</sub> &#8260; <sub>1.15</sub> &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar; </p>
+                <small> Escoamento do aço escolhido no projeto, majorado em : &alpha; = 1.5</small>
+                <p> fyd = <sub>{{resultado.fyk}}</sub> &#8260; <sub>1.15</sub> =<span class="resValue">{{resultado.fyd}} &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</span> </p>
+                <p>Vrd<sub>2</sub> = 0,27 &ast; &alpha;v<sub>2</sub>&ast;fcd&ast;bw&ast;d &lpar;KN&rpar;</p>
+                <small> Valor do cortante resistente de cálculo. </small>
+                <small> Se Vrd > Vsd; usar modelo 1, caso contrário usar o modelo 2 </small>
+                <p>Vrd<sub>2</sub> = 0,27 {{resultad.alp2}}&ast;{{resultado.fcd}}&ast;{{resultado.bw}}&ast;{{resultado.d}} =<span class="resValue">{{resultado.vrd2}} &lpar;KN&rpar;</span></p>
+                <p>&alpha;v<sub>2</sub> = &lpar; 1- &lpar;<sup>fck</sup>&#8260;<sub>250</sub>&rpar;&rpar;</p>
+                <p>&alpha;v<sub>2</sub> = &lpar; 1- &lpar;<sup>{{resultado.fck}}</sup>&#8260;<sub>250</sub>&rpar;&rpar; = <span class="resValue"> {{resultado.alp2}}</span></p>
+                <p> Vc = 0,6&ast;fctd&ast;bw&ast;d &lpar;KN&rpar;</p>
+                <small>Resistência caracteristica do conceto ao cisalhamanto</small>
+                <p> Vc = 0,6&ast;{{resultado.ftd}}&ast;<sup>&lpar;{{resultado.bw}}&ast;{{resultado.d}}&rpar;</sup> &#8260;<sub>100</sub>= <span class="resValue"> {{resultado.vc}}&lpar;KN&rpar;</span> </p>
+                <p>f<sub>ctm</sub> = 0,3&ast;fck <sup> <sup>2</sup>&#8260;<sub>3</sub></sup> &lpar;Mpa&rpar;</p>
+                <p>f<sub>ctm</sub> = 0,3&ast;{{resultado.fck}} <sup> <sup>2</sup>&#8260;<sub>3</sub></sup>= <span class="resValue">{{resultado.fctm}} &lpar;Mpa&rpar;</span></p>
+                <p>fctk<sub>inf</sub> =  0,7&ast;f<sub>ctm</sub> &lpar;Mpa&rpar;</p>
+                <p>fctk<sub>inf</sub> =  0,7&ast; {{resultado.fctm}} = <span class="resValue">{{resultado.fctkinf}} &lpar;Mpa&rpar;</span></p>
+                <p>fctd =<sup>fctk<sub>inf</sub> </sup>&#8260;<sub>1.4</sub> &lpar;
+                <sup>KN</sup>&#8260;<sub>m<sup>2</sup> </sub>&rpar;</p>
+                <p>fctd = {{resultado.fctkinf}}</sup>&#8260;<sub>1.4</sub>  = <span class="resValue">{{resultado.ftd}} &lpar;<sup>KN</sup>&#8260;<sub>m<sup>2</sup> </sub>&rpar;</span></p>
+                <p>Vsw = Vsd - Vc</p>
+                <small> Parcela do esforço cortante que é efetivaamente absorvida pelo concreto, se negativa, usr armadura mínima.</small>
+                <p>Vsw = {{resultado.vsd}}- {{resultado.vc}} = <span class="resValue"> {{resultado.vsw}}</span></p>
+                {{#positivo resultado.vsw }}
+                <p> Vsd &gt; Vc</p>
+                <small class="resValue"> Necessário calcular armadura</small>
+                <p>Asw = <sup>Vsw</sup>&#8260;<sub>0,9&ast;d&ast;fyd &lpar;</sup> cm <sup>2</sup>&rpar; </p>
+                <small>Área de armadura dos estribos</small>
+                <p>Asw = <sup>{{resultado.vsw}}</sup>&#8260;<sub>0,9&ast;  &lpar;<sup>{{resultado.d}}</sup> &#8260;<sub>100</sub>&rpar; &ast;{{resultado.fyd}}</sub> = <span class="resValue">{{resultado.asw}} &lpar;cm <sup>2</sup>&rpar;</span> </p>
+                {{/positivo}}
+                
+                {{#negativo resultado.vsw }}
+                <p> Usar armadura mínima </p>
+                <p>Asw = 0.4 &ast; bw</p>  &lpar;cm <sup>2</sup>&rpar;</span> </p>
+                <p>Asw = 0.4* {{resultado.bw}}</p> = <span class="resValue">{{resultado.asw}} &lpar;cm <sup>2</sup>&rpar;</span> </span></p>
+                {{/negativo}}
+            </div>
+            {{!-- Estribos contas--}}
+
+            <div class="estribosResDireita">
+                <p class="resValue"> Tabela com valores de diâmetro &lpar;mm&rpar; e espaçamento &lpar;cm&rpar;  para estribos simples </p>
+            <div class="table4">
+                <div class="table4RowElements">
+                    <div class="table4Col">
+                        <p class="espHeader">Espaçamento
+                            <br>&lpar;cm&rpar;
+                        </p>
+                        <p class="table4Elements"> 7  </p>
+                        <p class="table4Elements"> 8  </p>
+                        <p class="table4Elements"> 9  </p>
+                        <p class="table4Elements"> 10 </p>
+                        <p class="table4Elements"> 11 </p>
+                        <p class="table4Elements"> 12 </p>
+                        <p class="table4Elements"> 13 </p>
+                        <p class="table4Elements"> 14 </p>
+                        <p class="table4Elements"> 15 </p>
+                        <p class="table4Elements"> 16 </p>
+                        <p class="table4Elements"> 17 </p>
+                        <p class="table4Elements"> 18 </p>
+                        <p class="table4Elements"> 19 </p>
+                        <p class="table4Elements"> 20 </p>
+                        <p class="table4Elements"> 21 </p>
+                        <p class="table4Elements"> 22 </p>
+                        <p class="table4Elements"> 23 </p>
+                        <p class="table4Elements"> 24 </p>
+                        <p class="table4Elements"> 25 </p>
+                        <p class="table4Elements"> 26 </p>
+                        <p class="table4Elements"> 27 </p>
+                        <p class="table4Elements"> 28 </p>
+                        <p class="table4Elements"> 29 </p>
+                        <p class="table4Elements"> 30 </p>
+                    </div>
+                    <div class="table4Row2">
+                        <p class="dmHeader"> Diâmetro dos estribos simples em mm</p>
+                        <div class="dmRow">
+                             <p class="table4Element"> 5	</p>
+                             <p class="table4Element"> 6.3  </p>
+                             <p class="table4Element"> 8	</p>
+                             <p class="table4Element"> 10	</p>
+                             <p class="table4Element"> 12.5 </p>
+                             <p class="table4Element"> 16   </p>
+                        </div>
+                        <div class="table4Row">
+                             {{#each barEst}}
+                                <div>
+                                    {{#each query}}
+                                    {{#closer this.asw ../../resultado.asw}}
+                                        <p class="table4Element close">{{this.asw}}</p>
+                                    {{/closer}}
+                                    {{#close this.asw ../../resultado.asw}}
+                                        <p class="table4Element closer">{{this.asw}}</p>
+                                    {{/close}}
+                                    {{#far this.asw ../../resultado.asw}}
+                                        <p class="table4Element far">{{this.asw}}</p>
+                                    {{/far}}
+                                    {{#further this.asw ../../resultado.asw}}
+                                        <p class="table4Element further">{{this.asw}}</p>
+                                    {{/further}}
+                                    {{#invalid this.asw ../../resultado.asw}}
+                                        <p class="table4Element invalid">{{this.asw}}</p>
+                                    {{/invalid}}
+                                    {{/each}}
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tableLegend">
+                <p class="resTitle"> Legenda de cores da tabela </p>
+                <p> <span class="legendIcon leg1"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; muito próximo;</p>
+                <p> <span class="legendIcon leg2"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;  próximo;</p>
+                <p> <span class="legendIcon leg3"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;  distante;</p>
+                <p> <span class="legendIcon leg4"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar;  muito distante;</p>
+                <p> <span class="legendIcon leg5"> Valor</span> de As &lpar;cm <sup>2</sup>&rpar; inválido;</p>
+            </div>
+        </div>
+        {{!-- Fim da tabela dos estribos --}}
+
+
+
+        </div>
+        {{!-- Estribos final--}}
+
+        
+
+
+         
+    </div>
+   {{!-- fim do memo de calculo --}}
+
+ 
+</div>
+{{!-- Fim da página de resultados --}}
+
+{{/if}}
+
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script defer>
+
+
+    const a1 = document.getElementById('dp');
+    a1.addEventListener('click', getPdf,{once: true},)
+
+
+    async function getPdf(){
+        await axios.get('http://localhost:5000/pdf', {
+        responseType: 'arraybuffer',
+        headers: {
+        'Accept': 'application/pdf'
+        }
+        }).then((res)=> {
+        const blob = new Blob([res.data], {type: 'application/pdf'})
+        a1.href = window.URL.createObjectURL(blob);
+        a1.click();
+        }      
+        ).catch((err)=>console.log(err))
+    }
+    
+</script>
+
+

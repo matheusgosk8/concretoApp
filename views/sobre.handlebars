@@ -1,0 +1,46 @@
+<div class="sobre">
+    <h2> Sobre a aplicação </h2>
+    
+    <div class="apres">
+        <p> Esta é uma aplicação desenvolvida para a disciplina de concreto armado do Instituto Federal Goiano - Câmpus Rio Verde</p>
+        <p> A funcionalidade principal da aplicação se trata da resolução de um dimensionamento simples seguindo as orientações da NBR-6118  , é importante salientar de que este projeto não deve ser usado como critério prático de dimensionamento em situações comerciais ou de aplicação real. </p>
+    </div>
+ 
+    
+    <h2> Uso da aplicação </h2>
+
+    <div class="usoApp">
+        <p>Para dimensionar as armaduras longitudinais e transversal &lpar;estribos&rpar; o usuário deve entrar com os valores relacionados a seção transversal da viga, informando também o cobrimento de concreto utilizado, este possuí valores fixados em norma com o valor mínimo obrigatório de 3cm.</p>
+        <p> Após informar os valores da seção transversal, o usuário deverá informar os esforços solicitantes na viga,  estes se tratam do momento positivo máximo, momento negativo máximo &lpar; caso não exista basta inserir zero &rpar; e o maior valor de cortante atuando na viga, todos os valores devem ser inseridos considerando as suas respectivas unidades informadas na aplicação, como critério de segurança ainda será utilizado um fator de 1.4 aplicado nos esforços inseridos.</p>
+        <p> A última informação solicitada, se trata das informações de projeto, para qual resistência característica do concreto ao qual se deseja trabalhar, assim como o tipo do aço usado nas armaduras longitudinais positivas e negativas assim como o aço utilizado nos estribos.</p>
+        <p> Após preencher todos os campos, basta o usuário enviar os dados e a aplicação realizará os devidos cálculos e pesquisas nas respectivas tabelas, retornando um valor de área de aço em cm<sup>2</sup>, assim como a tabela de dimensionamento contendo os diâmetros das barras, quantidades de barras no caso das armaduras longitudinais &lpar; será considerado apenas o uso de barras de mesmo diâmetro na solução &rpar; e o espaçamento entre estribos do tipo simples de duas faces em cm. Os resultados podem ser impressos em um arquivo .pdf, esta ferramenta foi disponibilizada somente para acessos a aplicação via desktop, a versão mobile realiza todas as contas e possuí a mesma página de resultados, porém não disponibiliza a ferramenta de impressão dos resultados.</p>
+        <p> A aplicação demonstra na página de <a href="/data">dados</a> todas as tabelas e formulações utilizadas nos cálculos do dimensionamento.</p>
+
+    </div>
+
+    <div class="ref">
+        <h2> Referências </h2>
+        <p> Os seguintes conteúdos foram utilizados no auxílio da criação desta aplicação: </p>
+    
+        <p><i class="bi bi-arrow-right"></i> <a href="http://repositorio.eesc.usp.br/bitstream/handle/RIEESC/7503/Concreto%20armado%20tabelas%20e%20%C3%A1bacos.pdf?sequence=1"> Concreto armado, tabelas e ábacos - Libâno </a></p>
+
+        <p><i class="bi bi-arrow-right"></i>  <a href="https://wwwp.feb.unesp.br/pbastos/concreto2/Cortante.pdf">Dimensionamento de vigas de concreto armado à força cortante – prof. doutor paulo sergio bastos – unesp 2022.</a></p>
+        <p><i class="bi bi-arrow-right"></i><a href="https://docente.ifrn.edu.br/valtencirgomes/disciplinas/construcao-de-edificios/abnt-6118-projeto-de-estruturas-de-concreto-procedimento"> NBR 6118 -2014 - projeto de estruturas de concreto -
+        procedimento</a></p>
+        
+        <p class="appPak"> Pacotes e tecnologias usadas no projeto: </p>
+        <p><i class="bi bi-arrow-right"></i><a href="https://www.npmjs.com/package/express"> Express.js</a></p>
+
+        <p><i class="bi bi-arrow-right"></i> <a href="https://nodejs.org/>"> Node.js</a></p>
+        <p><i class="bi bi-arrow-right"></i> <a href="https://www.npmjs.com/package/express-handlebars"> Handlebars</a></p>
+      
+        <p><i class="bi bi-arrow-right"></i> <a href="https://pptr.dev/"> Puppeteer</a></p>
+        <p><i class="bi bi-arrow-right"></i><a href="https://getbootstrap.com/"> Bootstrap</a></p>
+      
+       
+        <p class="refFooter"> A aplicação não se responsabiliza pelo conteúdo utilizado nas referências do projeto, todos são de livre distribuição e acesso por pesquisa pública. </p>
+    </div>
+ 
+
+
+</div>
