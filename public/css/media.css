@@ -191,9 +191,6 @@
 
     /* Resultados */
 
-    .result-page{
-    }
-
     .result-page p{
         font-size: var(--fs-mobile-small);
     }
