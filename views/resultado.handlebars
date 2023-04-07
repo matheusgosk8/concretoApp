@@ -284,9 +284,9 @@
                   &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</p>
                 <small> Resistência acompressão de cáculo, majorado em &alpha;= 1.4</small>
                 <p>fcd = <sup>{{resultado.fck}}&ast;1000</sup>&#8260;<sub>1.4</sub> =<span class="resValue">{{resultado.fcd}}&lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</span></p>
-                <p> fyd = <sub>fyk</sub> &#8260; <sub>1.15</sub> &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar; </p>
+                <p> fyd = <sup>fyk</sup> &#8260; <sub>1.15</sub> &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar; </p>
                 <small> Escoamento do aço escolhido no projeto, majorado em : &alpha; = 1.5</small>
-                <p> fyd = <sub>{{resultado.fyk}}</sub> &#8260; <sub>1.15</sub> =<span class="resValue">{{resultado.fyd}} &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</span> </p>
+                <p> fyd = <sup>{{resultado.fyk}}</sup> &#8260; <sub>1.15</sub> =<span class="resValue">{{resultado.fyd}} &lpar;<sup>KN</sup> &#8260;<sub>m<sup>2</sup> </sub> &rpar;</span> </p>
                 <p>Vrd<sub>2</sub> = 0,27 &ast; &alpha;v<sub>2</sub>&ast;fcd&ast;bw&ast;d &lpar;KN&rpar;</p>
                 <small> Valor do cortante resistente de cálculo. </small>
                 <small> Se Vrd > Vsd; usar modelo 1, caso contrário usar o modelo 2 </small>
@@ -295,24 +295,26 @@
                 <p>&alpha;v<sub>2</sub> = &lpar; 1- &lpar;<sup>{{resultado.fck}}</sup>&#8260;<sub>250</sub>&rpar;&rpar; = <span class="resValue"> {{resultado.alp2}}</span></p>
                 <p> Vc = 0,6&ast;fctd&ast;bw&ast;d &lpar;KN&rpar;</p>
                 <small>Resistência caracteristica do conceto ao cisalhamanto</small>
-                <p> Vc = 0,6&ast;{{resultado.ftd}}&ast;<sup>&lpar;{{resultado.bw}}&ast;{{resultado.d}}&rpar;</sup> &#8260;<sub>100</sub>= <span class="resValue"> {{resultado.vc}}&lpar;KN&rpar;</span> </p>
+                <p> Vc = 0,6&ast;{{resultado.ftd}}&ast; &lpar;<sup>{{resultado.bw}}</sup>&#8260;<sub>100</sub> &ast; <sup>{{resultado.d}} </sup>&#8260;<sub>100</sub> &rpar; = <span class="resValue"> {{resultado.vc}}&lpar;KN&rpar;</span> </p>
                 <p>f<sub>ctm</sub> = 0,3&ast;fck <sup> <sup>2</sup>&#8260;<sub>3</sub></sup> &lpar;Mpa&rpar;</p>
                 <p>f<sub>ctm</sub> = 0,3&ast;{{resultado.fck}} <sup> <sup>2</sup>&#8260;<sub>3</sub></sup>= <span class="resValue">{{resultado.fctm}} &lpar;Mpa&rpar;</span></p>
                 <p>fctk<sub>inf</sub> =  0,7&ast;f<sub>ctm</sub> &lpar;Mpa&rpar;</p>
                 <p>fctk<sub>inf</sub> =  0,7&ast; {{resultado.fctm}} = <span class="resValue">{{resultado.fctkinf}} &lpar;Mpa&rpar;</span></p>
                 <p>fctd =<sup>fctk<sub>inf</sub> </sup>&#8260;<sub>1.4</sub> &lpar;
                 <sup>KN</sup>&#8260;<sub>m<sup>2</sup> </sub>&rpar;</p>
-                <p>fctd = {{resultado.fctkinf}}</sup>&#8260;<sub>1.4</sub>  = <span class="resValue">{{resultado.ftd}} &lpar;<sup>KN</sup>&#8260;<sub>m<sup>2</sup> </sub>&rpar;</span></p>
+                <p>fctd = <sup>{{resultado.fctkinf}}</sup>&#8260;<sub>1.4</sub>  = <span class="resValue">{{resultado.ftd}} &lpar;<sup>KN</sup>&#8260;<sub>m<sup>2</sup> </sub>&rpar;</span></p>
                 <p>Vsw = Vsd - Vc</p>
                 <small> Parcela do esforço cortante que é efetivaamente absorvida pelo concreto, se negativa, usr armadura mínima.</small>
-                <p>Vsw = {{resultado.vsd}}- {{resultado.vc}} = <span class="resValue"> {{resultado.vsw}}</span></p>
+                <p>Vsw = {{resultado.vsd}}- {{resultado.vc}} = <span class="resValue"> {{resultado.vsw}}&lpar;KN&rpar;</span> </p>
                 {{#positivo resultado.vsw }}
                 <p> Vsd &gt; Vc</p>
                 <small class="resValue"> Necessário calcular armadura</small>
-                <p>Asw = <sup>Vsw</sup>&#8260;<sub>0,9&ast;d&ast;fyd &lpar;</sup> cm <sup>2</sup>&rpar; </p>
+                <p>Asw = <sup>Vsw</sup>&#8260;<sub>0,9&ast;d&ast;fyd &lpar;</sub> cm <sup>2</sup>&rpar; </p>
                 <small>Área de armadura dos estribos</small>
-                <p>Asw = <sup>{{resultado.vsw}}</sup>&#8260;<sub>0,9&ast;  &lpar;<sup>{{resultado.d}}</sup> &#8260;<sub>100</sub>&rpar; &ast;{{resultado.fyd}}</sub> = <span class="resValue">{{resultado.asw}} &lpar;cm <sup>2</sup>&rpar;</span> </p>
+                <p>Asw = <sup>{{resultado.vsw}}</sup>&#8260;<sub>0,9&ast; {{resultado.d}}&ast; &lpar;<sup>{{resultado.fyd}}</sup> &#8260;<sub>100</sub>&rpar; </sub> = <span class="resValue">{{resultado.asw}} &lpar;cm <sup>2</sup>&rpar;</span> </p>
                 {{/positivo}}
+            
+            
                 
                 {{#negativo resultado.vsw }}
                 <p> Usar armadura mínima </p>
