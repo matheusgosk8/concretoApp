@@ -13,14 +13,10 @@ const app = express();
 
 // Mongoo db connection
 const db = mongoose.connection;
-// mongoose.connect('mongodb://localhost:27017/concreto');
-// mongoose.connect('mongodb+srv://matheusgosk8:MTSmongoDB@mtsgosk8-cluster.xxkkjob.mongodb.net/concreto');
 mongoose.connect(uri);
 
 db.once('open', ()=> console.log("Conexão com a base de dados bem sucedida"));
 db.on('error', (err)=>console.log(err));
-
-
 
 
 // Rotas
