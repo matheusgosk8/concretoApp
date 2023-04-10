@@ -1,6 +1,1 @@
-const express = require('express');
-const router = express.Router();
-
-
-
-module.exports = router;
+const e=require("express").Router();e.get("/",((e,r)=>{r.render("sobre")})),module.exports=e;
