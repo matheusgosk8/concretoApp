@@ -34,14 +34,16 @@ const liveReloadServer = livereload.createServer();
 
 app.use(connectLiveReload());
 
-app.set('views', path.join(__dirname, 'views'));
-// Pasta pública
-
 app.engine("handlebars", exphbs.engine({ defaultLayout: "layout", runtimeOptions: {
 	allowProtoPropertiesByDefault: true,
 	allowProtoMethodsByDefault: true} }));
 app.set('view engine', 'handlebars');
+
 // Handlebars
+app.set('views', path.join(__dirname, 'views'));
+// Pasta pública
+
+
 
 // Handlebars custom halpers
 const Handlebars = require('handlebars');
