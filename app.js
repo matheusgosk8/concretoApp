@@ -21,7 +21,7 @@ db.on('error', (err)=>console.log(err));
 const home = require('./routes/homePage');
 const sobre = require('./routes/sobrePage');
 const data = require('./routes/dataPage');
-const { use } = require('./routes/homePage');
+
 
 
 app.engine("handlebars", exphbs.engine({ defaultLayout: "layout", runtimeOptions: {
@@ -30,7 +30,7 @@ app.engine("handlebars", exphbs.engine({ defaultLayout: "layout", runtimeOptions
 app.set('view engine', 'handlebars');
 
 // Handlebars
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname,'views'));
 
 
 // Handlebars custom halpers
