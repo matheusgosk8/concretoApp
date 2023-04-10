@@ -1,8 +1,6 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const livereload = require('livereload');
-const connectLiveReload = require('connect-livereload');
 const mongoose = require('mongoose');
 const MONGO_URI = require('dotenv').config();
 const uri = process.env.MONGO_URI;
@@ -25,14 +23,6 @@ const sobre = require('./routes/sobrePage');
 const data = require('./routes/dataPage');
 const { use } = require('./routes/homePage');
 
-const liveReloadServer = livereload.createServer();
-    liveReloadServer.server.once("connection", () => {
-    setTimeout(() => {
-    liveReloadServer.refresh("/");
-}, 100);
-});
-
-app.use(connectLiveReload());
 
 app.engine("handlebars", exphbs.engine({ defaultLayout: "layout", runtimeOptions: {
 	allowProtoPropertiesByDefault: true,
@@ -41,8 +31,6 @@ app.set('view engine', 'handlebars');
 
 // Handlebars
 app.set('views', path.join(__dirname, 'views'));
-// Pasta pública
-
 
 
 // Handlebars custom halpers
@@ -140,7 +128,7 @@ app.use(express.urlencoded({extended: true}));
 // body parser
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+// Pasta pública
 app.use('/', home);
 app.use('/sobre', sobre);
 app.use('/data', data);
