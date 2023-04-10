@@ -130,10 +130,6 @@ router.get('/', async(req, res)=>{
         console.log(error.message)
     }
 
-
-    // res.send(finalData);
-    
-
 });
 
 module.exports = router;

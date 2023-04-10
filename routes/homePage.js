@@ -300,17 +300,6 @@ router.get('/pdf', async(req, res)=>{
       let pdfBuffer =  await pdfService.buildPDF('printResult',{cloneObj, cloneTab, bar, barEst});
      
 
-      // const browser = await puppeteer.launch();
-      // const page = await browser.newPage();
-      // await page.goto('http://localhost:5000/result', 
-      // {
-      //   waitUntil: 'networkidle0'
-      // });
-      // await page.addStyleTag({path:'./public/css/index.css'});
-      // const pdfBuffer = await page.pdf({
-      //   format: 'A4'
-      // });
-
       res.set({ 'Content-Type': 'application/pdf', 'Content-Length': pdfBuffer.length });
 
       res.send(pdfBuffer); 
@@ -319,26 +308,7 @@ router.get('/pdf', async(req, res)=>{
       console.log(error.message)
     }
 
-      
-
-    
-
 });
-
-
-router.get('/sobre', (req, res)=>{
-  const newResultado = new resultados();
-    newResultado.msk1 = 90;
-    newResultado.msk2 = 30;
-    newResultado.vsk = 5;
-
-    const data = newResultado;
-
-    res.render('sobre', {resultados: data});
-
-
-});
-
 
 
 

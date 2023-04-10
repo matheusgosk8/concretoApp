@@ -131,26 +131,17 @@ Handlebars.registerHelper('negativo', function(A,options){
         return options.inverse(this);
     }
 });
-
-
-
 // Handlebars custom halpers
-
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // body parser
 
-
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use('/', home);
 app.use('/sobre', sobre);
 app.use('/data', data);
-
-
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`Servidor aberto no port: ${PORT}`));
