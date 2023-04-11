@@ -18,19 +18,19 @@ db.on('error', (err)=>console.log(err));
 
 
 // Rotas
-const home = require('./routes/homePage');
-const sobre = require('./routes/sobrePage');
-const data = require('./routes/dataPage');
+const home = require('../routes/homePage');
+const sobre = require('../routes/sobrePage');
+const data = require('../routes/dataPage');
 
 
 
-app.engine("handlebars", exphbs.engine({ defaultLayout: "layout", runtimeOptions: {
+app.engine("handlebars", exphbs.engine({ defaultLayout: "layouts", runtimeOptions: {
 	allowProtoPropertiesByDefault: true,
 	allowProtoMethodsByDefault: true} }));
 app.set('view engine', 'handlebars');
 
 // Handlebars
-app.set('views', path.join(__dirname,'views'));
+app.set('views', path.join(__dirname,'..','views'));
 
 
 // Handlebars custom halpers
@@ -127,7 +127,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // body parser
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'..','public')));
 // Pasta pública
 app.use('/', home);
 app.use('/sobre', sobre);
