@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon app.js --ext *",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "npm i express-handlebars"
   },
   "author": "",
   "license": "ISC",
