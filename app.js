@@ -24,7 +24,7 @@ const data = require('./routes/dataPage');
 
 
 
-app.engine("handlebars", exphbs.engine({ defaultLayout: "layout", runtimeOptions: {
+app.engine("handlebars", exphbs.engine({ defaultLayout: "layouts", runtimeOptions: {
 	allowProtoPropertiesByDefault: true,
 	allowProtoMethodsByDefault: true} }));
 app.set('view engine', 'handlebars');
